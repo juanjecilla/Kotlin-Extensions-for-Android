@@ -4,20 +4,21 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.view.View
 
-fun View.visible(visible: Boolean, animate: Boolean = true) {
+fun View.animatedVisible(visible: Boolean) {
     if (visible) {
-        if (animate) {
-            animate().alpha(1f).setDuration(300).setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationStart(animation: Animator) {
-                    super.onAnimationStart(animation)
-                    visibility = View.VISIBLE
-                }
-            })
-        } else {
-            visible(true)
-        }
+        animate().alpha(1f).setDuration(300).setListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationStart(animation: Animator) {
+                super.onAnimationStart(animation)
+                visible(true)
+            }
+        })
     } else {
-        visible(false)
+        animate().alpha(0f).setDuration(300).setListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationStart(animation: Animator) {
+                super.onAnimationStart(animation)
+                visible(false)
+            }
+        })
     }
 }
 
