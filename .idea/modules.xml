@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Kotlin-Extensions.iml" filepath="$PROJECT_DIR$/.idea/modules/Kotlin-Extensions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Kotlin-Extensions.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Kotlin-Extensions.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlin-extensions/Kotlin-Extensions.kotlin-extensions.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlin-extensions/Kotlin-Extensions.kotlin-extensions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlin-extensions-android/Kotlin-Extensions.kotlin-extensions-android.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlin-extensions-android/Kotlin-Extensions.kotlin-extensions-android.iml" />
+    </modules>
+  </component>
+</project>

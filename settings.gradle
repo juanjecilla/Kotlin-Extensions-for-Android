@@ -1,0 +1,4 @@
+include ':kotlin-extensions'
+include ':kotlin-extensions-android'
+include ':app'
+rootProject.name = "Kotlin-Extensions"
