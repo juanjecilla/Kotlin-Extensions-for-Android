@@ -19,7 +19,7 @@ fun Context.showAlertDialog(
         .setTitle(title)
         .setMessage(message)
         .setCancelable(false)
-        .setPositiveButton(positiveButtonLabel) { dialog, id ->
+        .setPositiveButton(positiveButtonLabel) { dialog, _ ->
             dialog.cancel()
             positiveButtonAction()
         }

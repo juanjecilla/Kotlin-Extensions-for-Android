@@ -8,7 +8,10 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.Transformation
 import android.view.inputmethod.InputMethodManager
+import androidx.lifecycle.coroutineScope
+import androidx.lifecycle.findViewTreeLifecycleOwner
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.*
 
 fun View.animatedVisible(visible: Boolean) {
     if (visible) {
@@ -126,14 +129,16 @@ fun View.snackbarWithAction(
     Snackbar.make(this, message, Snackbar.LENGTH_LONG)
         .setAction(actionLabel) {
             block()
-        }
+        }.show()
 }
 
 fun View.hideKeyboard(): Boolean {
     try {
-        val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val inputMethodManager =
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         return inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
-    } catch (ignored: RuntimeException) { }
+    } catch (ignored: RuntimeException) {
+    }
     return false
 }
 
@@ -141,4 +146,15 @@ fun View.showKeyboard() {
     val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     this.requestFocus()
     imm.showSoftInput(this, 0)
+}
+
+fun View.delayOnLifecycle(
+    durationInMillis: Long,
+    dispatcher: CoroutineDispatcher = Dispatchers.Main,
+    block: () -> Unit
+): Job? = findViewTreeLifecycleOwner()?.let { lifecycleOwner ->
+    lifecycleOwner.lifecycle.coroutineScope.launch(dispatcher) {
+        delay(durationInMillis)
+        block()
+    }
 }
