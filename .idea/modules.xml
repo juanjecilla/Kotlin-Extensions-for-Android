@@ -4,8 +4,16 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Kotlin-Extensions.iml" filepath="$PROJECT_DIR$/.idea/modules/Kotlin-Extensions.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Kotlin-Extensions.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Kotlin-Extensions.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Kotlin-Extensions.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Kotlin-Extensions.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Kotlin-Extensions.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Kotlin-Extensions.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Kotlin-Extensions.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Kotlin-Extensions.app.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlin-extensions/Kotlin-Extensions.kotlin-extensions.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlin-extensions/Kotlin-Extensions.kotlin-extensions.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlin-extensions-android/Kotlin-Extensions.kotlin-extensions-android.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlin-extensions-android/Kotlin-Extensions.kotlin-extensions-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlin-extensions-android/Kotlin-Extensions.kotlin-extensions-android.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlin-extensions-android/Kotlin-Extensions.kotlin-extensions-android.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlin-extensions-android/Kotlin-Extensions.kotlin-extensions-android.main.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlin-extensions-android/Kotlin-Extensions.kotlin-extensions-android.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlin-extensions-android/Kotlin-Extensions.kotlin-extensions-android.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlin-extensions-android/Kotlin-Extensions.kotlin-extensions-android.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlin-extensions/Kotlin-Extensions.kotlin-extensions.main.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlin-extensions/Kotlin-Extensions.kotlin-extensions.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlin-extensions/Kotlin-Extensions.kotlin-extensions.test.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlin-extensions/Kotlin-Extensions.kotlin-extensions.test.iml" />
     </modules>
   </component>
 </project>

@@ -1,9 +1,16 @@
 package com.scallop.kotlin_extensions_android
 
 import android.app.AlertDialog
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.widget.Toast
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 
 //Extensions
 //fun Int.asColor() = ContextCompat.getColor(ApplicationCalss.instance, this)
@@ -59,4 +66,22 @@ fun Context?.isOnline(failBlock : () -> Unit  = { globalIntenetFailBock() }, suc
 
 fun Context?.globalIntenetFailBock(){
     // show alter to user or implement custom code here
+}
+
+// https://cpaleop.medium.com/android-broadcastreceiver-as-flow-c8f5d80a7392
+fun Context.networkBroadcastReceiverFlow(): Flow<Boolean> {
+    return callbackFlow {
+
+        val networkBroadcastReceiver = object : BroadcastReceiver() {
+
+            override fun onReceive(context: Context?, intent: Intent) {
+                if (intent.action != ConnectivityManager.CONNECTIVITY_ACTION) return
+                val activeNetwork = intent.extras?.get(ConnectivityManager.EXTRA_NETWORK_INFO) as NetworkInfo? ?: return
+                trySend(activeNetwork.isConnected)
+            }
+        }
+        val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(networkBroadcastReceiver, filter)
+        awaitClose { this@networkBroadcastReceiverFlow.unregisterReceiver(networkBroadcastReceiver) }
+    }
 }
