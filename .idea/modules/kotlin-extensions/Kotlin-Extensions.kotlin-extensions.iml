@@ -8,11 +8,6 @@
         <option name="LAST_KNOWN_AGP_VERSION" />
       </configuration>
     </facet>
-    <facet type="java-gradle" name="Java-Gradle">
-      <configuration>
-        <option name="BUILDABLE" value="true" />
-      </configuration>
-    </facet>
     <facet type="kotlin-language" name="Kotlin">
       <configuration version="3" platform="JVM 1.8" allPlatforms="JVM [1.8]" useProjectSettings="false">
         <compilerSettings>
@@ -48,9 +43,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager">
-    <output url="file://$MODULE_DIR$/../../../kotlin-extensions/build/classes/java/main" />
-    <output-test url="file://$MODULE_DIR$/../../../kotlin-extensions/build/classes/java/test" />
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../kotlin-extensions">
       <excludeFolder url="file://$MODULE_DIR$/../../../kotlin-extensions/.gradle" />
