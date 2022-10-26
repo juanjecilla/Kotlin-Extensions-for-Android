@@ -12,10 +12,6 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
-//Extensions
-//fun Int.asColor() = ContextCompat.getColor(ApplicationCalss.instance, this)
-//fun Int.asDrawable() = ContextCompat.getDrawable(MavrikApplication.instance, this)
-
 // Show alert dialog
 fun Context.showAlertDialog(
     positiveButtonLabel: String = "getString(R.string.okay)",
@@ -52,19 +48,22 @@ fun Context?.isOnline(): Boolean {
     return false
 }
 
-fun Context?.isOnline(failBlock : () -> Unit  = { globalIntenetFailBock() }, successBlock : () -> Unit ) {
+fun Context?.isOnline(
+    failBlock: () -> Unit = { globalIntenetFailBock() },
+    successBlock: () -> Unit
+) {
     this?.apply {
         val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val netInfo = cm.activeNetworkInfo
-        if (netInfo != null && netInfo.isConnected){
+        if (netInfo != null && netInfo.isConnected) {
             successBlock()
-        }else{
+        } else {
             failBlock()
         }
-    }?:failBlock()
+    } ?: failBlock()
 }
 
-fun Context?.globalIntenetFailBock(){
+fun Context?.globalIntenetFailBock() {
     // show alter to user or implement custom code here
 }
 
@@ -76,7 +75,9 @@ fun Context.networkBroadcastReceiverFlow(): Flow<Boolean> {
 
             override fun onReceive(context: Context?, intent: Intent) {
                 if (intent.action != ConnectivityManager.CONNECTIVITY_ACTION) return
-                val activeNetwork = intent.extras?.get(ConnectivityManager.EXTRA_NETWORK_INFO) as NetworkInfo? ?: return
+                val activeNetwork =
+                    intent.extras?.get(ConnectivityManager.EXTRA_NETWORK_INFO) as NetworkInfo?
+                        ?: return
                 trySend(activeNetwork.isConnected)
             }
         }

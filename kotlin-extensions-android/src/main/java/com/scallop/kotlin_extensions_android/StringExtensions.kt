@@ -4,31 +4,42 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.style.*
+import android.util.Patterns
 import android.view.View
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 
 
-fun SpannableString.withClickableSpan(clickablePart: String, onClickListener: () -> Unit): SpannableString {
+fun SpannableString.withClickableSpan(
+    clickablePart: String,
+    onClickListener: () -> Unit
+): SpannableString {
     val clickableSpan = object : ClickableSpan() {
         override fun onClick(p0: View) {
             onClickListener.invoke()
         }
     }
     val clickablePartStart = indexOf(clickablePart)
-    setSpan(clickableSpan,
+    setSpan(
+        clickableSpan,
         clickablePartStart,
         clickablePartStart + clickablePart.length,
-        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+    )
     return this
 }
 
 fun TextView.setColorOfSubstring(substring: String, color: Int) {
     try {
-        val spannable = android.text.SpannableString(text)
+        val spannable = SpannableString(text)
         val start = text.indexOf(substring)
-        spannable.setSpan(ForegroundColorSpan(ContextCompat.getColor(context, color)), start, start + substring.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(context, color)),
+            start,
+            start + substring.length,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
         text = spannable
     } catch (e: Exception) {
         e.printStackTrace()
@@ -57,7 +68,7 @@ fun String.relativeSize(size: Float): SpannableStringBuilder {
     return toSpannable().spanText(span)
 }
 
-fun String.supserscript(): SpannableStringBuilder {
+fun String.superscript(): SpannableStringBuilder {
     val span = SuperscriptSpan()
     return toSpannable().spanText(span)
 }
@@ -66,3 +77,7 @@ fun String.strike(): SpannableStringBuilder {
     val span = StrikethroughSpan()
     return toSpannable().spanText(span)
 }
+
+//Email Validation
+fun String.isValidEmail(): Boolean =
+    this.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()

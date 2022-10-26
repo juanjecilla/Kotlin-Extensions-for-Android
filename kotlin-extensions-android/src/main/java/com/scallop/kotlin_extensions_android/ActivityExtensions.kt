@@ -4,9 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.PermissionChecker
 
 
 fun Activity.hideKeyboard() {
@@ -40,17 +37,3 @@ inline fun <reified T : Any> Activity.getValueNonNull(
     val value = intent?.extras?.get(label)
     requireNotNull((if (value is T) value else defaultValue)) { label }
 }
-
-//fun AppCompatActivity.checkPermission(permission: AppPermission) = run {
-//    applicationContext?.let {
-//        (ActivityCompat.checkSelfPermission(it, permission.permissionName
-//        ) == PermissionChecker.PERMISSION_GRANTED)
-//    } ?: false
-//}
-//
-//fun AppCompatActivity.shouldRequestPermissionRationale(permission: AppPermission) =
-//    ActivityCompat.shouldShowRequestPermissionRationale(this, permission.permissionName)
-//
-//fun AppCompatActivity.requestAllPermissions(permission: AppPermission) {
-//    ActivityCompat.requestPermissions(this, arrayOf(permission.permissionName), permission.requestCode))
-//}
